@@ -8,7 +8,7 @@
         font-family: Arial, sans-serif;
         text-align: center;
         background: #ffe6ec;
-        margin-top: 100px;
+        margin-top: 80px;
     }
     h1 {
         font-size: 40px;
@@ -41,6 +41,10 @@
         color: #444;
         height: 40px;
     }
+    #videoContainer {
+        margin-top: 40px;
+        display: none;
+    }
 </style>
 </head>
 <body>
@@ -53,6 +57,19 @@
 </div>
 
 <div id="comment"></div>
+
+<div id="videoContainer">
+    <h2 style="color:#d1005d;">كنت متأكده 💖</h2>
+    <iframe 
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/lJzlUxcfoOU?autoplay=1"
+        title="YouTube video player" 
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+    </iframe>
+</div>
 
 <script>
 let comments = [
@@ -68,6 +85,7 @@ let commentIndex = 0;
 let yesBtn = document.getElementById("yesBtn");
 let noBtn = document.getElementById("noBtn");
 let commentBox = document.getElementById("comment");
+let videoContainer = document.getElementById("videoContainer");
 
 noBtn.addEventListener("mouseover", () => {
     let x = Math.random() * (window.innerWidth - 200);
@@ -75,11 +93,9 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 
-    // تكبير زر YES
     let currentSize = parseInt(window.getComputedStyle(yesBtn).fontSize);
     yesBtn.style.fontSize = (currentSize + 5) + "px";
 
-    // عرض التعليق
     if (commentIndex < comments.length) {
         commentBox.innerText = comments[commentIndex];
         commentIndex++;
@@ -87,8 +103,9 @@ noBtn.addEventListener("mouseover", () => {
 });
 
 yesBtn.addEventListener("click", () => {
-    // افتح فيديو تختاره
-    window.location.href = "https://www.youtube.com/watch?v=lJzlUxcfoOU&list=RDlJzlUxcfoOU&start_radio=1"; 
+    document.getElementById("buttons").style.display = "none";
+    commentBox.innerText = "اختيار موفق 😌💘";
+    videoContainer.style.display = "block";
 });
 </script>
 
