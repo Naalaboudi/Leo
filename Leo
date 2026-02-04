@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #ffe6ec;
+        margin-top: 100px;
+    }
+    h1 {
+        font-size: 40px;
+        color: #d1005d;
+    }
+    #buttons {
+        margin-top: 40px;
+    }
+    button {
+        font-size: 22px;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    #yesBtn {
+        background-color: #ff4d88;
+        color: white;
+        transition: 0.2s;
+    }
+    #noBtn {
+        background-color: #999;
+        color: white;
+        position: absolute;
+        transition: 0.2s;
+    }
+    #comment {
+        margin-top: 30px;
+        font-size: 24px;
+        color: #444;
+        height: 40px;
+    }
+</style>
+</head>
+<body>
+
+<h1>HI ABU BADER<br>WILL U BE MY VALENTINE?</h1>
+
+<div id="buttons">
+    <button id="yesBtn">YES</button>
+    <button id="noBtn">NO</button>
+</div>
+
+<div id="comment"></div>
+
+<script>
+let comments = [
+    "افااا",
+    "متأكددد؟",
+    "فكر مره ثانيه",
+    "طيب فكر مره ثالثه",
+    "طب عشانيييي",
+    "اصلا مو على كيفك"
+];
+
+let commentIndex = 0;
+let yesBtn = document.getElementById("yesBtn");
+let noBtn = document.getElementById("noBtn");
+let commentBox = document.getElementById("comment");
+
+noBtn.addEventListener("mouseover", () => {
+    let x = Math.random() * (window.innerWidth - 200);
+    let y = Math.random() * (window.innerHeight - 200);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    // تكبير زر YES
+    let currentSize = parseInt(window.getComputedStyle(yesBtn).fontSize);
+    yesBtn.style.fontSize = (currentSize + 5) + "px";
+
+    // عرض التعليق
+    if (commentIndex < comments.length) {
+        commentBox.innerText = comments[commentIndex];
+        commentIndex++;
+    }
+});
+
+yesBtn.addEventListener("click", () => {
+    // افتح فيديو تختاره
+    window.location.href = "https://youtu.be/dQw4w9WgXcQ"; 
+});
+</script>
+
+</body>
+</html>
