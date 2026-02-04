@@ -3,23 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Valentine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
     body {
         font-family: Arial, sans-serif;
         text-align: center;
         background: #ffe6ec;
-        margin-top: 80px;
+        margin: 40px 10px;
     }
     h1 {
-        font-size: 40px;
+        font-size: 32px;
         color: #d1005d;
+        line-height: 1.4;
     }
     #buttons {
-        margin-top: 40px;
+        margin-top: 30px;
     }
     button {
-        font-size: 22px;
-        padding: 15px 30px;
+        font-size: 20px;
+        padding: 14px 26px;
         border: none;
         border-radius: 10px;
         cursor: pointer;
@@ -27,29 +29,34 @@
     #yesBtn {
         background-color: #ff4d88;
         color: white;
-        transition: 0.2s;
     }
     #noBtn {
         background-color: #999;
         color: white;
         position: absolute;
-        transition: 0.2s;
     }
     #comment {
-        margin-top: 30px;
-        font-size: 24px;
+        margin-top: 20px;
+        font-size: 20px;
         color: #444;
-        height: 40px;
+        min-height: 32px;
     }
     #videoContainer {
-        margin-top: 40px;
+        margin-top: 30px;
         display: none;
+    }
+    iframe {
+        width: 100%;
+        max-width: 560px;
+        height: 315px;
+        border-radius: 12px;
+        border: 0;
     }
 </style>
 </head>
 <body>
 
-<h1>HI ABU BADER<br>WILL U BE MY VALENTINE?</h1>
+<h1>هلاا والله بالاسد ابو بدر<br>WILL U BE MY VALENTINE?</h1>
 
 <div id="buttons">
     <button id="yesBtn">YES</button>
@@ -59,14 +66,11 @@
 <div id="comment"></div>
 
 <div id="videoContainer">
-    <h2 style="color:#d1005d;">كنت متأكده 💖</h2>
-    <iframe 
-        width="560" 
-        height="315"
-        src="https://www.youtube.com/embed/lJzlUxcfoOU?autoplay=1&rel=0&controls=1"
+    <h2 style="color:#d1005d;">اضغطي ▶️ لتشغيل الأغنية 💖</h2>
+    <iframe
+        src="https://www.youtube.com/embed/lJzlUxcfoOU?rel=0&controls=1"
         title="YouTube video player"
-        frameborder="0"
-        allow="autoplay; encrypted-media"
+        allow="encrypted-media; picture-in-picture"
         allowfullscreen>
     </iframe>
 </div>
@@ -87,24 +91,24 @@ let noBtn = document.getElementById("noBtn");
 let commentBox = document.getElementById("comment");
 let videoContainer = document.getElementById("videoContainer");
 
-noBtn.addEventListener("mouseover", () => {
-    let x = Math.random() * (window.innerWidth - 200);
-    let y = Math.random() * (window.innerHeight - 200);
+function moveNo() {
+    let x = Math.random() * (window.innerWidth - 150);
+    let y = Math.random() * (window.innerHeight - 150);
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
-
-    let currentSize = parseInt(window.getComputedStyle(yesBtn).fontSize);
-    yesBtn.style.fontSize = (currentSize + 5) + "px";
 
     if (commentIndex < comments.length) {
         commentBox.innerText = comments[commentIndex];
         commentIndex++;
     }
-});
+}
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
 
 yesBtn.addEventListener("click", () => {
     document.getElementById("buttons").style.display = "none";
-    commentBox.innerText = "اختيار موفق 😌💘";
+    commentBox.innerText = "شاطر 😌💘";
     videoContainer.style.display = "block";
 });
 </script>
